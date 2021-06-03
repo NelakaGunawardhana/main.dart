@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "1096339682439",
-    "project_id": "ictexpert-b279a",
-    "storage_bucket": "ictexpert-b279a.appspot.com"
+    "project_number": "303141953147",
+    "project_id": "ictexpert-d4624",
+    "storage_bucket": "ictexpert-d4624.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1096339682439:android:d79f9299f4c144117a3422",
+        "mobilesdk_app_id": "1:303141953147:android:25bf3d7f776984ba45ccde",
         "android_client_info": {
           "package_name": "com.example.ictexpert"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1096339682439-s6ot9hlho95f3e9kh9tif0cvaj9qr84s.apps.googleusercontent.com",
+          "client_id": "303141953147-2tr0mt9su8in49d8nntlja565sc8bb90.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCtoLYX0gPG5NceoXpPn9SWpfPbLghdHBU"
+          "current_key": "AIzaSyD5CMi63NKxaqa_LKf0O6udGlgmVXrA-xk"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1096339682439-s6ot9hlho95f3e9kh9tif0cvaj9qr84s.apps.googleusercontent.com",
+              "client_id": "303141953147-2tr0mt9su8in49d8nntlja565sc8bb90.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

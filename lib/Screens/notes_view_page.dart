@@ -1,24 +1,41 @@
-import 'dart:typed_data';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 import 'package:ict_expert/globles.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 
 
-class teachersGuidePage extends StatefulWidget {
+
+class NotesView extends StatefulWidget {
+  String subject="";
+  NotesView(String subject){
+    this.subject=subject;
+  }
+
   @override
-  _teachersGuidePageState createState() => _teachersGuidePageState();
+  _NotesViewState createState() => _NotesViewState();
 }
 
-class _teachersGuidePageState extends State<teachersGuidePage> {
+class _NotesViewState extends State<NotesView> {
+
+  var photos={
+    "Elemental Concepts of ICT":[
+      "assets/Notes/Lesson1/image_1.PNG",
+      "assets/Notes/Lesson1/image_2.PNG",
+      "assets/Notes/Lesson1/image_3.PNG",
+      "assets/Notes/Lesson1/image_4.PNG",
+      "assets/Notes/Lesson1/image_5.PNG",
+      "assets/Notes/Lesson1/image_6.PNG",
+      "assets/Notes/Lesson1/image_7.PNG",
+      "assets/Notes/Lesson1/image_8.PNG",
+      "assets/Notes/Lesson1/image_9.PNG",
+    ]
+  };
 
   @override
-
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
     final Size size=MediaQuery.of(context).size;
-
     String lang="";
 
     if(isEnglish==true){
@@ -27,7 +44,6 @@ class _teachersGuidePageState extends State<teachersGuidePage> {
     }else{
       lang="Sinhala";
     }
-    final width = MediaQuery.of(context).size.width;
 
     return Scaffold(
       body: Container(
@@ -43,17 +59,19 @@ class _teachersGuidePageState extends State<teachersGuidePage> {
           slivers: [
             SliverAppBar(
               title: Text(
-                "Teachers' Guide",
-                style: GoogleFonts.mateSc(
-                  textStyle: TextStyle(
-                      color: Color.fromARGB(255, 255, 255, 255),
-                      letterSpacing: .5,
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
+                      widget.subject,
+                      style: GoogleFonts.mateSc(
+                        textStyle: TextStyle(
+                        color: Color.fromARGB(255, 255, 255, 255),
+                        letterSpacing: .5,
+                            fontSize: size.width*0.06,
+                            fontWeight: FontWeight.bold),
+                         ),
+                       ),
               backgroundColor: Color.fromARGB(100, 98, 80, 61),
               expandedHeight: 100.0,
               flexibleSpace: FlexibleSpaceBar(
+                stretchModes: [StretchMode.fadeTitle],
                 title: Container(
                   padding: EdgeInsets.all(2.0),
                   color: Color.fromARGB(255, 98, 80, 61),
@@ -64,17 +82,16 @@ class _teachersGuidePageState extends State<teachersGuidePage> {
                           letterSpacing: .5,
                           fontSize: size.width*0.03,
                           fontWeight: FontWeight.normal),
-                    ),
-                  ),
+                    ),),
                 ),
               ),
             ),
             SliverList(
                 delegate: SliverChildBuilderDelegate((context,index){
-                  return GetContent(index);
+                  return Image.asset(photos[widget.subject]![index]);
                 },
-                  childCount: 10,
-                )
+                  childCount: photos[widget.subject]!.length
+              )
             )
           ],
         ),
@@ -82,40 +99,3 @@ class _teachersGuidePageState extends State<teachersGuidePage> {
     );
   }
 }
-
-
-class GetContent extends StatefulWidget {
-  final int index;
-  const GetContent(this.index);
-
-  @override
-  _GetContentState createState() => _GetContentState();
-}
-
-class _GetContentState extends State<GetContent> {
-  String imageUrl = "";
-
-  @override
-  void initState(){
-    super.initState();
-    FirebaseStorage.instance.ref("TeachersGuide/English/eGr13TG ICT-001.jpg").getDownloadURL().then((value) {
-      this.setState(() {
-        imageUrl = value;
-      });
-    });
-  }
-
-
-  @override
-  Widget build(BuildContext context) {
-    print(imageUrl);
-    return CachedNetworkImage(
-      imageUrl: imageUrl,
-      progressIndicatorBuilder: (context, url, downloadProgress) =>
-          CircularProgressIndicator(value: downloadProgress.progress),
-      errorWidget: (context, url, error) => Icon(Icons.error_outline_rounded),
-    );
-  }
-}
-
-

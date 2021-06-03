@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ict_expert/Screens/notes_view_page.dart';
+
 
 class notesPage extends StatelessWidget {
   final List noteName = [
@@ -22,6 +24,7 @@ class notesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
+    String subject;
 
     return Scaffold(
       body: Container(
@@ -83,19 +86,27 @@ class notesPage extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: ListTile(
+                      onTap: () {
+                        subject=noteName[index];
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>NotesView(subject)),);
+                      },
                       title: Text(
-                    noteName[index],
-                    style: GoogleFonts.mateSc(
-                      textStyle: TextStyle(
-                          color: Color.fromARGB(185, 0, 0, 0),
-                          letterSpacing: .5,
-                          fontSize: width * 0.056,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  )),
+                        noteName[index],
+                        style: GoogleFonts.mateSc(
+                          textStyle: TextStyle(
+                              color: Color.fromARGB(185, 0, 0, 0),
+                              letterSpacing: .5,
+                              fontSize: width * 0.056,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      )
+                  ),
                 ),
               );
-            }, childCount: 12))
+            },
+                    childCount: 12
+                )
+            )
           ],
         ),
       ),

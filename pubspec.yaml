@@ -21,7 +21,6 @@ environment:
   sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
-  firebase_storage:
   flutter:
     sdk: flutter
 
@@ -31,6 +30,15 @@ dependencies:
   cupertino_icons: ^1.0.2
   google_fonts: ^2.1.0
   device_preview: ^0.7.1
+  cloud_firestore: ^2.2.0
+  firebase_core: ^1.2.0
+  firebase_storage: ^8.1.0
+  firebase_analytics: ^8.1.0
+  toggle_switch: ^0.1.9
+  flutter_switch: ^0.3.1
+  flutter_svg: ^0.22.0
+  fluttertoast: ^8.0.7
+  cached_network_image: ^3.0.0
 
 dev_dependencies:
   flutter_test:
@@ -44,6 +52,7 @@ flutter:
   uses-material-design: true
   assets:
     - images/
+    - assets/Notes/Lesson1/
 
   #   - images/a_dot_ham.jpeg
 
